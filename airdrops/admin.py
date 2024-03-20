@@ -1,4 +1,5 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 from .models import Airdrop, Category
 
 
@@ -10,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Airdrop)
-class AirdropAdmin(admin.ModelAdmin):
+class AirdropAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id',
                     'name',
                     'slug',
