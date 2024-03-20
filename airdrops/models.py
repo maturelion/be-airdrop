@@ -42,7 +42,7 @@ class Airdrop(models.Model):
     estimate_value = models.CharField(max_length=50, blank=True, default="N/A")
     tokens_per_claim = models.CharField(max_length=50, blank=True, default="N/A")
     value = models.CharField(max_length=50, blank=True, default="N/A")
-    max_participants = models.CharField(max_length=50, blank=True, default="N/A")
+    max_participants = models.CharField(max_length=50, blank=True, default="Unlimited")
     website = models.URLField(blank=True)
     ticker = models.CharField(max_length=50, blank=True)
     white_paper = models.URLField(blank=True)
