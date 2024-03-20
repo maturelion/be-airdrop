@@ -1,4 +1,5 @@
 import uuid
+from django.template.defaultfilters import slugify
 from django.db import models
 import environ
 
@@ -32,18 +33,18 @@ class Airdrop(models.Model):
         unique=True
     )
     name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(blank=True, max_length=255)
     logo = models.ImageField(blank=True, upload_to=upload_airdrop_to)
     description = models.TextField()
-    platform = models.CharField(max_length=50)
-    total_value = models.CharField(max_length=50)
-    total_supply = models.CharField(max_length=50)
-    estimate_value = models.CharField(max_length=50)
-    tokens_per_claim = models.CharField(max_length=50)
-    value = models.CharField(max_length=50)
-    max_participants = models.CharField(max_length=50)
-    website = models.URLField()
-    ticker = models.CharField(max_length=50)
+    platform = models.CharField(max_length=50, blank=True, default="N/A")
+    total_value = models.CharField(max_length=50, blank=True, default="N/A")
+    total_supply = models.CharField(max_length=50, blank=True, default="N/A")
+    estimate_value = models.CharField(max_length=50, blank=True, default="N/A")
+    tokens_per_claim = models.CharField(max_length=50, blank=True, default="N/A")
+    value = models.CharField(max_length=50, blank=True, default="N/A")
+    max_participants = models.CharField(max_length=50, blank=True, default="N/A")
+    website = models.URLField(blank=True)
+    ticker = models.CharField(max_length=50, blank=True)
     white_paper = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     telegram = models.URLField(blank=True)
@@ -70,3 +71,9 @@ class Airdrop(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+
+        super(Airdrop, self).save(*args, **kwargs)
