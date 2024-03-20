@@ -18,6 +18,8 @@ class AirdropSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'slug',
+            'logo',
+            'description',
             'platform',
             'total_value',
             'total_supply',
