@@ -6,5 +6,5 @@ from .models import Airdrop
 class AirdropViewset(ModelViewSet):
     queryset = Airdrop.objects.all()
     serializer_class = AirdropSerializer
-    lookup_field = "id"
+    lookup_field = "slug"
     
