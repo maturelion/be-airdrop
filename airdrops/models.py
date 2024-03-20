@@ -5,8 +5,10 @@ import environ
 
 env = environ.Env()
 
+
 def upload_airdrop_to(instance, filename):
     return f'Airdrop/{instance.name}/{filename}'
+
 
 class Category(models.Model):
     id = models.UUIDField(
@@ -40,9 +42,11 @@ class Airdrop(models.Model):
     total_value = models.CharField(max_length=50, blank=True, default="N/A")
     total_supply = models.CharField(max_length=50, blank=True, default="N/A")
     estimate_value = models.CharField(max_length=50, blank=True, default="N/A")
-    tokens_per_claim = models.CharField(max_length=50, blank=True, default="N/A")
+    tokens_per_claim = models.CharField(
+        max_length=50, blank=True, default="N/A")
     value = models.CharField(max_length=50, blank=True, default="N/A")
-    max_participants = models.CharField(max_length=50, blank=True, default="Unlimited")
+    max_participants = models.CharField(
+        max_length=50, blank=True, default="Unlimited")
     website = models.URLField(blank=True)
     ticker = models.CharField(max_length=50, blank=True)
     white_paper = models.URLField(blank=True)
@@ -69,9 +73,12 @@ class Airdrop(models.Model):
 
     categories = models.ManyToManyField(Category)
 
+    class Meta:
+        ordering = ['-date_added']
+
     def __str__(self):
         return self.name
-    
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
