@@ -4,7 +4,7 @@ from .models import Airdrop, Category
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('id',
                     'name'
                     )
