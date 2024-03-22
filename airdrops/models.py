@@ -45,6 +45,7 @@ class Airdrop(models.Model):
     tokens_per_claim = models.CharField(
         max_length=50, blank=True, default="N/A")
     value = models.CharField(max_length=50, blank=True, default="N/A")
+    hotness = models.IntegerField(default=0)
     max_participants = models.CharField(
         max_length=50, blank=True, default="Unlimited")
     website = models.URLField(blank=True)

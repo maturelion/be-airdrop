@@ -21,6 +21,7 @@ class AirdropAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                     'estimate_value',
                     'tokens_per_claim',
                     'value',
+                    'hotness',
                     'max_participants',
                     'website',
                     'ticker',
