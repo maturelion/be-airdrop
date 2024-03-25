@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_filters',
     'import_export',
     'airdrops',
+    'presales',
 ]
 
 MIDDLEWARE = [

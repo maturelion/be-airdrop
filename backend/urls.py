@@ -6,9 +6,11 @@ from django.conf import settings
 from rest_framework.routers import DefaultRouter
 
 from airdrops.views import AirdropViewset
+from presales.views import PresaleViewset
 
 router = DefaultRouter()
 router.register('airdrops', AirdropViewset)
+router.register('presales', PresaleViewset)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
